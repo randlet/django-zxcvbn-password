@@ -51,6 +51,8 @@ class PasswordStrengthInput(PasswordInput):
             body=message_body,
             min_score=min_score)
 
+        self.attrs.update(attrs)
+        attrs = None
         try:
             self.attrs['class'] = '%s password_strength'.strip() % self.attrs['class']  # noqa
         except KeyError:
@@ -91,6 +93,9 @@ class PasswordConfirmationInput(PasswordInput):
             </p>
         </div>
         """ % (_('Warning'), _("Your passwords don't match."))
+
+        self.attrs.update(attrs)
+        attrs = None
 
         try:
             self.attrs['class'] = '%s password_confirmation'.strip() % self.attrs['class']  # noqa
